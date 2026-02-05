@@ -14,12 +14,14 @@ pipeline {
         }
 
         stage('Build & Test with Coverage') {
-            steps {withMaven(maven: 'Maven3') {
-                    bat 'mvn clean verify'
-                }
-                
+        steps {
+            script {
+                def mvnHome = tool 'Maven3'
+                bat "${mvnHome}\\bin\\mvn clean verify"
             }
         }
+    }
+
 
         stage('SonarQube Analysis') {
             environment {
