@@ -9,13 +9,16 @@ pipeline {
 
         stage('Clone') {
             steps {
-                git branch: 'develop', url: 'https://github.com/akito-sama/cargo-tracker.git'
+                git branch: 'develop', url: 'https://github.com/Basma04-cloud/cargo-tracker.git'
             }
         }
 
         stage('Build & Test with Coverage') {
-            steps {
-                bat 'mvn clean verify'
+            steps {withMaven(maven: 'Maven3') {
+            bat 'mvn clean verify'
+
+            }
+                
             }
         }
 
