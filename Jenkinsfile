@@ -7,11 +7,7 @@ pipeline {
 
     stages {
 
-        stage('Clone') {
-            steps {
-                git branch: 'develop', url: 'https://github.com/Basma04-cloud/cargo-tracker.git'
-            }
-        }
+       
 
         stage('Build & Test with Coverage') {
             steps {withMaven(maven: 'Maven3') {
